@@ -1,5 +1,7 @@
 import { VStack, Heading } from 'native-base';
 
+import Logo from '../../assets/logo_primary.svg';
+
 export function SignIn() {
   return (
     <VStack
