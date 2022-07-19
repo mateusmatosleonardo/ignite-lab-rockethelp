@@ -10,6 +10,8 @@ import { Input } from '../../components/Input/Input';
 import { Button } from '../../components/Button/Button';
 
 export function SignIn() {
+  const [name, setName] = useState<string>('');
+  const [password, setPassword] = useState<string>('');
 
   const { colors } = useTheme();
 
@@ -33,6 +35,7 @@ export function SignIn() {
         InputLeftElement={
           <Icon as={<Envelope color={colors.gray[300]} />}
             ml={4} />}
+        onChangeText={setName}
       />
       <Input
         mb={8}
@@ -41,6 +44,7 @@ export function SignIn() {
           <Icon as={<Key color={colors.gray[300]} />}
             ml={4} />}
         secureTextEntry
+        onChangeText={setPassword}
       />
 
       <Button title='Entrar' w="full" />
