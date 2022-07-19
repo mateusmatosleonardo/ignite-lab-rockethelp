@@ -7,6 +7,7 @@ import { StatusBar } from 'react-native';
 import { SignIn } from './src/screens/SignIn/SignIn';
 import { Loading } from './src/components/Loading/Loading';
 import { Home } from './src/screens/Home/Home';
+import { Register } from './src/screens/Register/Register';
 
 
 export default function App() {
@@ -24,7 +25,7 @@ export default function App() {
         translucent
       />
       <NativeBaseProvider theme={THEME}>
-        {fontsLoaded ? <Home /> : <Loading />}
+        {fontsLoaded ? <Register /> : <Loading />}
       </NativeBaseProvider>
     </>
   );
