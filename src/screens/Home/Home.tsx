@@ -1,3 +1,4 @@
+import { useNavigation } from '@react-navigation/native';
 import {
   HStack,
   IconButton,
@@ -21,10 +22,24 @@ export function Home() {
     useState<'open' | 'closed'>('open');
   const [orders, setOrders] =
     useState<OrderProps[]>([
-
+      {
+        id: '123',
+        patrimony: '123456',
+        when: '18/07/2022 às 14:00',
+        status: 'open'
+      }
     ]);
 
   const { colors } = useTheme();
+  const navigation = useNavigation();
+
+  function handleNewOrder() {
+    navigation.navigate('New');
+  }
+
+  function handleOpenDetails(orderId: string) {
+    navigation.navigate('Details', { orderId });
+  }
 
   return (
     <VStack
@@ -81,7 +96,7 @@ export function Home() {
           contentContainerStyle={{ paddingBottom: 100 }}
           data={orders}
           keyExtractor={item => item.id}
-          renderItem={({ item }) => <Order data={item} />}
+          renderItem={({ item }) => <Order data={item} onPress={() => handleOpenDetails(item.id)} />}
           ListEmptyComponent={() => (
             <Center>
               <ChatTeardropText color={colors.gray[300]} size={40} />
@@ -92,7 +107,10 @@ export function Home() {
             </Center>
           )}
         />
-        <Button title="Nova solicitação" />
+        <Button
+          title="Nova solicitação"
+          onPress={handleNewOrder}
+        />
       </VStack>
     </VStack>
   );
