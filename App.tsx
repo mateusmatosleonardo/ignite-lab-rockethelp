@@ -3,12 +3,9 @@ import { NativeBaseProvider } from 'native-base';
 import { useFonts, Roboto_400Regular, Roboto_700Bold } from '@expo-google-fonts/roboto';
 import { THEME } from './src/styles/theme';
 import { StatusBar } from 'react-native';
+import { Routes } from './src/routes';
 
-import { SignIn } from './src/screens/SignIn/SignIn';
 import { Loading } from './src/components/Loading/Loading';
-import { Home } from './src/screens/Home/Home';
-import { Register } from './src/screens/Register/Register';
-
 
 export default function App() {
 
@@ -25,7 +22,7 @@ export default function App() {
         translucent
       />
       <NativeBaseProvider theme={THEME}>
-        {fontsLoaded ? <Register /> : <Loading />}
+        {fontsLoaded ? <Routes /> : <Loading />}
       </NativeBaseProvider>
     </>
   );
