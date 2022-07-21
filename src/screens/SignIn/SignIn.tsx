@@ -39,6 +39,8 @@ export function SignIn() {
           return Alert.alert('Entrar', 'E-mail ou senha inválida.');
         }
 
+        return Alert.alert('Entrar', 'Não foi possível acessar.')
+
       });
   }
 

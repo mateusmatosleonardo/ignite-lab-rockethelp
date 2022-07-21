@@ -1,3 +1,4 @@
+import { Alert } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import {
   HStack,
@@ -11,6 +12,7 @@ import {
 } from 'native-base';
 import { SignOut, ChatTeardropText } from 'phosphor-react-native';
 import { useState } from 'react';
+import auth from '@react-native-firebase/auth';
 import Logo from '../../assets/logo_secondary.svg';
 import { Button } from '../../components/Button/Button';
 import { Filter } from '../../components/Filter/Filter';
@@ -41,6 +43,15 @@ export function Home() {
     navigation.navigate('Details', { orderId });
   }
 
+  function handleLogout() {
+    auth()
+      .signOut()
+      .catch(error => {
+        console.log(error);
+        return Alert.alert('Sair', 'Não foi possível sair')
+      });
+  }
+
   return (
     <VStack
       flex={1}
@@ -59,6 +70,7 @@ export function Home() {
         <Logo />
         <IconButton
           icon={<SignOut size={26} color={colors.gray[300]} />}
+          onPress={handleLogout}
         />
       </HStack>
       <VStack flex={1} px={6}>
